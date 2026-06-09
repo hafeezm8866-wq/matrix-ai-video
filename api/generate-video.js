@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,17 +14,16 @@ module.exports = async (req, res) => {
     }
 
     try {
-        const { prompt, image } = req.body;
-
-        // Permanent Public Video Links (Never Blocked)
+        // Bulletproof open-source stable video links (Never blockable)
         const mockVideos = [
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+            "https://www.w3schools.com/html/mov_bbb.mp4",
+            "https://www.w3schools.com/html/movie.mp4",
+            "https://html5demos.com/assets/dizzy.mp4"
         ];
         
         const randomVideo = mockVideos[Math.floor(Math.random() * mockVideos.length)];
 
+        // Artificial delay for render loop
         await new Promise(resolve => setTimeout(resolve, 4000));
 
         return res.status(200).json({
